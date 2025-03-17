@@ -1,11 +1,11 @@
 import java.util.List;
 
 class ParallelRabinKarp implements Runnable {
-    private final String text;
-    private final String pattern;
-    private final int start;
-    private final int end;
-    private final List<Integer> occurrences;
+    private  String text;
+    private  String pattern;
+    private  int start;
+    private  int end;
+    private  List<Integer> occurrences;
 
     public ParallelRabinKarp(String text, String pattern, int start, int end, List<Integer> occurrences) {
         this.text = text;
@@ -17,7 +17,8 @@ class ParallelRabinKarp implements Runnable {
 
     @Override
     public void run() {
-        List<Integer> localOccurrences = RabinKarpSearch.findOccurrences(text.substring(start, end), pattern);
+        RabinKarpSearch RKsearch = new RabinKarpSearch();
+        List<Integer> localOccurrences = RKsearch.findOccurrences(text.substring(start, end), pattern);
         synchronized (occurrences) {
             for (int index : localOccurrences) {
                 occurrences.add(index + start);

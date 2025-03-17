@@ -3,7 +3,7 @@ import java.util.*;
 class RabinKarpSearch {
     private static final int PRIME = 101;
 
-    public static List<Integer> findOccurrences(String text, String pattern) {
+    public  List<Integer> findOccurrences(String text, String pattern) {
         List<Integer> occurrences = new ArrayList<>();
         int patternLength = pattern.length();
         int textLength = text.length();
@@ -21,7 +21,7 @@ class RabinKarpSearch {
         return occurrences;
     }
 
-    private static int hash(String str, int length) {
+    private int hash(String str, int length) {
         int hash = 0;
         for (int i = 0; i < length; i++) {
             hash += str.charAt(i) * Math.pow(PRIME, i);
@@ -29,7 +29,7 @@ class RabinKarpSearch {
         return hash;
     }
 
-    private static int recalculateHash(String text, int oldIndex, int newIndex, int oldHash, int patternLength) {
+    private int recalculateHash(String text, int oldIndex, int newIndex, int oldHash, int patternLength) {
         int newHash = oldHash - text.charAt(oldIndex);
         newHash /= PRIME;
         newHash += text.charAt(newIndex) * Math.pow(PRIME, patternLength - 1);

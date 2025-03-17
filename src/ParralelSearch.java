@@ -1,11 +1,11 @@
 import java.util.List;
 
 class ParallelSearch implements Runnable {
-    private final String text;
-    private final String pattern;
-    private final int start;
-    private final int end;
-    private final List<Integer> occurrences;
+    private String text;
+    private String pattern;
+    private int start;
+    private int end;
+    private List<Integer> occurrences;
 
     public ParallelSearch(String text, String pattern, int start, int end, List<Integer> occurrences) {
         this.text = text;
